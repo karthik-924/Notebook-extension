@@ -9,33 +9,41 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <form method="post" id="login" style="width: 20%; text-align: center; margin: 0 auto;display: flex; flex-direction: column; justify-content: center;">
-        <span id="loginerror" style="color: red;"></span>
+    <form method="post" id="login" style="width: 20%; margin: 0 auto;display: flex; flex-direction: column; justify-content: center;">
+        <h1 style="text-align: center; text-decoration: underline;">Login</h1>
+        <br/>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
         </div>
+        <br/>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input name="password" type="password" class="form-control" id="lpassword" placeholder="Password" required>
         </div>
+        <span id="loginerror" style="color: red;"></span>
         <br/>
         <p>Dont have an account yet? <a href="#" id="link">Register</a></p>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <form method="post" id="register" style="width: 20%; text-align: center; margin: 0 auto;display: none; flex-direction: column; justify-content: center;">
+    <form method="post" id="register" style="width: 20%; margin: 0 auto;display: none; flex-direction: column;">
+        <h1 style="text-align: center; text-decoration: underline;">Register</h1>
+        <br/>
         <div class="form-group">
             <label for="exampleInputName">Name</label>
             <input name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
           </div>
+        <br/>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input name="email" type="email" class="form-control" id="remail" aria-describedby="emailHelp" placeholder="Enter email" required>
         </div>
+        <br/>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input name="password" type="password" class="form-control" id="rpassword" placeholder="Password" required>
         </div>
+        <br/>
         <div class="form-group">
             <label for="exampleInputPassword1">Confirm Password</label>
             <input name="confirmpassword" type="password" class="form-control" id="crpassword" placeholder="Confirm Password" required>

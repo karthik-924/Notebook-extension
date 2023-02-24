@@ -39,8 +39,13 @@ document.getElementById('login').addEventListener('submit', (event) => {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            localStorage.setItem('status','logged-in');
+            console.log(data);
+            localStorage.setItem('status', 'logged-in');
+            sessionStorage.setItem('email', email);
             window.location.href = '/home.html';
+        }
+        else {
+            document.getElementById('loginerror').innerText = "Incorrect username or password";
         }
     })
     .catch(error => {
@@ -48,6 +53,21 @@ document.getElementById('login').addEventListener('submit', (event) => {
     });
 });
   
+function postwith (to,p) {
+    var myForm = document.createElement("form");
+    myForm.method="post" ;
+    myForm.action = to ;
+    for (var k in p) {
+      var myInput = document.createElement("input") ;
+      myInput.setAttribute("name", k) ;
+      myInput.setAttribute("value", p[k]);
+      myForm.appendChild(myInput) ;
+    }
+    document.body.appendChild(myForm) ;
+    myForm.submit() ;
+    document.body.removeChild(myForm) ;
+}
+
 document.getElementById('register').addEventListener('submit', (event) => {
     event.preventDefault();
     const name = document.getElementById('name').value;
@@ -64,7 +84,8 @@ document.getElementById('register').addEventListener('submit', (event) => {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            localStorage.setItem('status','logged-in');
+            localStorage.setItem('status', 'logged-in');
+            sessionStorage.setItem('email', email);
             window.location.href = '/home.html';
         }
     })
