@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="home.js"></script>
     <title>Notebook</title>
 </head>
 <body>
     <h1>Hello! Welcome to notebook</h1>
+    <button onclick="window.location.href = 'index.html';localStorage.setItem('status','logged-out')" style="position:absolute; top: 20px; right: 20px;">Logout</button>
     <p>Write whatever you want here.</p>
     <form method="post">
-        <textarea name="note" id="note" cols="30" rows="10"</textarea>
+        <textarea name="note" id="note" style="width: 50%;" rows="10"></textarea>
+        <br/>
         <button type="submit">Save</button>
     </form>
 </body>

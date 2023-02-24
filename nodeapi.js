@@ -25,12 +25,13 @@ const schema = {
 const monmodel= mongoose.model('NEWCOL', schema)
 
 app.post('/register', (req, res) => {
-    const { name, email, password, notebook } = req.body
-    console.log(name, email, password, notebook)
+    const { name, email, password } = req.body
+    const notebook = ""
+    console.log(req.body)
     if (name && email && password) {
         const newuser = new monmodel({ name, email, password, notebook })
         newuser.save()
-        return res.status(200).send(`Welcome ${name}`)
+        return res.status(200).send({ success: true })
     }
     res.status(401).send('Please provide credentials')
 })
@@ -52,9 +53,9 @@ app.post("/login", (req, res) => {
     })
 })
 
-
-
-
+app.post("/notebook", (req, res) => {
+    const { email, notebook } = req.body
+    
 
 app.listen(5000, () => {
     console.log('Server is listening on port 5000....')

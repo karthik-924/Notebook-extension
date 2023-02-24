@@ -46,5 +46,30 @@ document.getElementById('login').addEventListener('submit', (event) => {
     .catch(error => {
       console.error(error);
     });
+});
+  
+document.getElementById('register').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('remail').value;
+    const password = document.getElementById('rpassword').value;
+    
+    fetch('http://localhost:5000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email , password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            localStorage.setItem('status','logged-in');
+            window.location.href = '/home.html';
+        }
+    })
+    .catch(error => {
+      console.error(error);
+    });
   });
   
