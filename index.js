@@ -23,74 +23,78 @@ submit.addEventListener("submit", (e) => {
   }
 });
 
-document.getElementById('login').addEventListener('submit', (event) => {
-    event.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('lpassword').value;
-    
-    fetch('http://localhost:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
+document.getElementById("login").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("lpassword").value;
+
+  fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        console.log(data);
+        localStorage.setItem("status", "logged-in");
+        sessionStorage.setItem("email", email);
+        window.location.href = "/home.html";
+      } else {
+        document.getElementById("loginerror").innerText =
+          "Incorrect username or password";
+      }
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log(data);
-            localStorage.setItem('status', 'logged-in');
-            sessionStorage.setItem('email', email);
-            window.location.href = '/home.html';
-        }
-        else {
-            document.getElementById('loginerror').innerText = "Incorrect username or password";
-        }
-    })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
 });
-  
-function postwith (to,p) {
-    var myForm = document.createElement("form");
-    myForm.method="post" ;
-    myForm.action = to ;
-    for (var k in p) {
-      var myInput = document.createElement("input") ;
-      myInput.setAttribute("name", k) ;
-      myInput.setAttribute("value", p[k]);
-      myForm.appendChild(myInput) ;
-    }
-    document.body.appendChild(myForm) ;
-    myForm.submit() ;
-    document.body.removeChild(myForm) ;
+
+function postwith(to, p) {
+  var myForm = document.createElement("form");
+  myForm.method = "post";
+  myForm.action = to;
+  for (var k in p) {
+    var myInput = document.createElement("input");
+    myInput.setAttribute("name", k);
+    myInput.setAttribute("value", p[k]);
+    myForm.appendChild(myInput);
+  }
+  document.body.appendChild(myForm);
+  myForm.submit();
+  document.body.removeChild(myForm);
 }
 
-document.getElementById('register').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('remail').value;
-    const password = document.getElementById('rpassword').value;
-    
-    fetch('http://localhost:5000/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email , password })
-    })
-    .then(response => response.json())
-    .then(data => {
+document.getElementById("register").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("remail").value;
+  const password = document.getElementById("rpassword").value;
+
+  fetch("http://localhost:5000/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.exists) {
         if (data.success) {
-            localStorage.setItem('status', 'logged-in');
-            sessionStorage.setItem('email', email);
-            window.location.href = '/home.html';
+          localStorage.setItem("status", "logged-in");
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("name", name);
+          window.location.href = "/home.html";
         }
+      } else {
+        document.getElementById("exists").innerText = "User already exists";
+      }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
-  });
-  
+});

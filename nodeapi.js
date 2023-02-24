@@ -28,6 +28,18 @@ app.post('/register', (req, res) => {
     const { name, email, password } = req.body
     const notebook = ""
     console.log(req.body)
+    monmodel.find({ email }, (err, data) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log(data)
+            if (data.length > 0) {
+                res.status(200).send({ success: false,exists: true })
+            }
+        }
+    })
+
     if (name && email && password) {
         const newuser = new monmodel({ name, email, password, notebook })
         newuser.save()

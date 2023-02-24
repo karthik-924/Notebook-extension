@@ -3,6 +3,10 @@ if(localStorage.getItem('status')!='logged-in'){
     window.location.href = '/index.html';
 }
 
+if(sessionStorage.getItem('name')!=null)
+    document.getElementById('heading').innerText = "Welcome " + sessionStorage.getItem('name');
+else
+    document.getElementById('heading').innerText = "Welcome to your notebook";
 
 document.getElementById('save').addEventListener('submit', (event) => {
     event.preventDefault();
@@ -40,6 +44,7 @@ const notebooksave= () => {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            console.log(data.data.notebook);
             if(data.data.notebook!=null)
             notebook.innerHTML = data.data.notebook;
         }
