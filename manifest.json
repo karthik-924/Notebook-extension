@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "Write your notes here",
     "manifest_version": 3,
+    "permissions": [
+        "storage","tabs"
+    ],
     "author": "Karthik Emmadi",
     "action":{
         "default_popup": "index.html",
