@@ -1,0 +1,23 @@
+{
+  "name": "notebook-extension",
+  "version": "1.0.0",
+  "description": "Extension where user can write and store important things.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthik-924/Notebook-extension.git"
+  },
+  "author": "Karthik Emmadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthik-924/Notebook-extension/issues"
+  },
+  "homepage": "https://github.com/karthik-924/Notebook-extension#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^6.10.0"
+  }
+}
