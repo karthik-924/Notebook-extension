@@ -1,0 +1,11 @@
+{
+    "name": "Notebook",
+    "version": "1.0.0",
+    "description": "Write your notes here",
+    "manifest_version": 3,
+    "author": "Karthik Emmadi",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Notebook"
+    }
+}
