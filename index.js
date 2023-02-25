@@ -1,4 +1,4 @@
-console.log("Hello World");
+
 const login = document.getElementById("login");
 const register = document.getElementById("register");
 const link = document.getElementById("link");
@@ -15,7 +15,6 @@ const pass = document.getElementById("rpassword");
 const confirmpass = document.getElementById("crpassword");
 const submit = document.getElementById("register");
 submit.addEventListener("submit", (e) => {
-  console.log("Working", pass.value, confirmpass.value);
   if (pass.value !== confirmpass.value) {
     console.log("");
     e.preventDefault();
@@ -39,7 +38,6 @@ document.getElementById("login").addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        console.log(data);
         localStorage.setItem("status", "logged-in");
         sessionStorage.setItem("email", email);
         window.location.href = "/home.html";
